@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Isomo Frontend Handoff</title>
+  <meta name="description" content="Current-state handoff for the hosted Isomo Brain Vue frontend.">
+  <title>Isomo Brain Frontend Handoff — Current Vue Build</title>
   <style>
     :root {
       --green: #8cc63d;
@@ -51,6 +52,12 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(29, 175, 236, 0.45);
+      outline-offset: 3px;
     }
 
     .page {
@@ -106,6 +113,9 @@
     }
 
     .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--surface);
@@ -354,6 +364,14 @@
 
     .grid.four {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .spaced-top {
+      margin-top: 14px;
+    }
+
+    .spaced-bottom {
+      margin-bottom: 14px;
     }
 
     .card {
@@ -795,6 +813,26 @@
       height: 48px;
     }
 
+    .swatch .color.green {
+      background: #8cc63d;
+    }
+
+    .swatch .color.blue {
+      background: #1dafec;
+    }
+
+    .swatch .color.dark {
+      background: #303030;
+    }
+
+    .swatch .color.muted {
+      background: #54595f;
+    }
+
+    .swatch .color.border {
+      background: #ededed;
+    }
+
     .swatch .body {
       padding: 9px;
     }
@@ -868,6 +906,7 @@
       background: var(--soft);
       color: var(--muted);
       font-size: 13px;
+      overflow-wrap: anywhere;
     }
 
     .print-only {
@@ -887,7 +926,7 @@
       .code-grid,
       .swatches,
       .do-dont {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .nav {
@@ -906,7 +945,7 @@
       .wireframe-top,
       .wireframe-row,
       .wireframe-kpis {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .flow-step:not(:last-child)::after {
@@ -915,6 +954,47 @@
         top: auto;
         bottom: -10px;
         transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 20px 16px 56px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero,
+      section {
+        padding: 20px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .card p,
+      .screen-card p {
+        overflow-wrap: anywhere;
       }
     }
 
@@ -964,43 +1044,44 @@
       <div class="brand">
         <div class="mark" aria-hidden="true"></div>
         <div>
-          <strong>Isomo Frontend Handoff</strong>
-          <span>Current Vue frontend for review</span>
+          <strong>Isomo Brain Frontend Handoff</strong>
+          <span>Hosted Vue prototype · verified 14 July 2026</span>
         </div>
       </div>
       <div class="actions">
-        <button class="button" onclick="window.print()">Print or Save PDF</button>
-        <a class="button primary" href="#done">Current Scope</a>
+        <a class="button primary" href="https://iamedisonu.github.io/frontend-host/" target="_blank" rel="noopener noreferrer">Open Live Frontend</a>
+        <a class="button" href="https://github.com/iamedisonu/frontend-host" target="_blank" rel="noopener noreferrer">View Repository</a>
+        <button class="button" type="button" onclick="window.print()">Print or Save PDF</button>
       </div>
     </header>
 
     <main class="hero">
       <div>
-        <div class="eyebrow">Current Frontend Handoff</div>
+        <div class="eyebrow">Current Hosted Frontend</div>
         <h1>Frontend</h1>
         <p class="hero-copy">
-          This document now matches the current frontend build. It is a Vue 3, frontend-only experience with a shared shell, workspace switcher, Overview, Data Health, settings, space management, archive/bin actions, and cleaner chat evidence. There are no backend endpoints connected in this branch.
+          This handoff matches the standalone <strong>Isomo Brain Vue 3 application</strong> now hosted on GitHub Pages. It includes browser-local account access, a responsive shared shell, the active Circles workspace, spaces and chats, Overview, Data Health, settings, Archive, Bin, and a dedicated Evidence rail. It is a review-ready frontend prototype—not a production system—and no backend, live data, file upload service, or AI model is connected.
         </p>
         <div class="meta-grid">
           <div class="meta-card">
-            <div class="label">Frontend</div>
-            <div class="value">Vue 3</div>
-            <div class="note">Vite, routed UI, local demo state</div>
+            <div class="label">Delivery</div>
+            <div class="value">GitHub Pages</div>
+            <div class="note">The main branch deploys automatically</div>
           </div>
           <div class="meta-card">
-            <div class="label">First Workspace</div>
+            <div class="label">Active Workspace</div>
             <div class="value">Circles</div>
-            <div class="note">Workspace shown in the current build</div>
+            <div class="note">Academy, IRIS, and Graduate are planned</div>
           </div>
           <div class="meta-card">
-            <div class="label">Build Mode</div>
-            <div class="value">Frontend-only</div>
-            <div class="note">No backend endpoints wired yet</div>
+            <div class="label">Verification</div>
+            <div class="value">9 / 9 tests</div>
+            <div class="note">Production build also passes</div>
           </div>
           <div class="meta-card">
-            <div class="label">Current State</div>
-            <div class="value">Ready</div>
-            <div class="note">Updated for boss review and sharing</div>
+            <div class="label">Readiness</div>
+            <div class="value">Review-ready</div>
+            <div class="note">Hosted prototype; not production-ready</div>
           </div>
         </div>
       </div>
@@ -1009,201 +1090,211 @@
         <div>
           <h2>Executive Summary</h2>
           <ul class="signal-list">
-            <li><span class="dot green"></span><span>The current shell includes the logo, workspace switcher, left navigation, spaces, chat menus, settings, archive, and bin actions.</span></li>
-            <li><span class="dot"></span><span>Overview has been simplified to two stable cards: total students in program and schools.</span></li>
-            <li><span class="dot orange"></span><span>Data Health is now a clean summary page with four small cards, a short feed list, and compact checks.</span></li>
+            <li><span class="dot green"></span><span>Users can create a local account, sign in, edit their profile, choose a default programme, and keep work on this browser.</span></li>
+            <li><span class="dot"></span><span>The shell is responsive and collapsible, with keyboard-aware menus, routes, spaces, search, chats, settings, Archive, and Bin.</span></li>
+            <li><span class="dot orange"></span><span>All metrics, feeds, assistant answers, SQL details, and citations are clearly demo content until real services are connected.</span></li>
           </ul>
         </div>
         <div class="tag-row">
-          <span class="tag green">Current build</span>
-          <span class="tag blue">Vue 3</span>
-          <span class="tag orange">Frontend only</span>
+          <span class="tag green">Live review build</span>
+          <span class="tag blue">Vue 3.5</span>
+          <span class="tag orange">Frontend-only</span>
         </div>
       </aside>
     </main>
 
     <div class="layout">
-      <nav class="nav" aria-label="Plan sections">
-        <h2>Plan Sections</h2>
+      <nav class="nav" aria-label="Handoff sections">
+        <h2>Handoff Sections</h2>
         <a href="#direction">1. Direction</a>
-        <a href="#adjustments">2. Adjustments</a>
-        <a href="#shape">3. Product Shape</a>
-        <a href="#roadmap">4. Current State</a>
-        <a href="#screens">5. Screen Plan</a>
-        <a href="#contracts">6. API Contracts</a>
-        <a href="#vue">7. Vue.js Guidance</a>
-        <a href="#brain">8. Isomo Brain</a>
-        <a href="#design">9. Visual Direction</a>
-        <a href="#rules">10. Rules</a>
-        <a href="#done">11. Current Scope</a>
+        <a href="#adjustments">2. What Changed</a>
+        <a href="#shape">3. User Journey</a>
+        <a href="#roadmap">4. Implementation Status</a>
+        <a href="#screens">5. Screens &amp; Behavior</a>
+        <a href="#contracts">6. Data &amp; Limitations</a>
+        <a href="#vue">7. Vue Implementation</a>
+        <a href="#brain">8. Chat &amp; Evidence</a>
+        <a href="#design">9. Visual &amp; Accessibility</a>
+        <a href="#rules">10. Guardrails</a>
+        <a href="#done">11. Release &amp; Scope</a>
       </nav>
 
       <div>
         <section id="direction">
           <h2><span class="num">1</span> Direction</h2>
           <p class="lede">
-            The frontend now presents Isomo as a clean workspace app with the logo in the shell, Circles as the active workspace, and a small set of pages that feel easy to scan.
+            The current frontend presents Isomo Brain as one focused workspace application. Circles is usable today; the other programme workspaces remain visible as a clear preview of the wider product without pretending they are complete.
           </p>
           <div class="grid three">
             <div class="card green">
-              <h3>Keep one shell</h3>
-              <p>Use the shared sidebar, top bar, and workspace switcher across the whole app.</p>
+              <h3>One shared product shell</h3>
+              <p>Authentication leads into the same responsive navigation, context bar, workspace switcher, and modal system across every route.</p>
             </div>
             <div class="card blue">
-              <h3>Keep the pages simple</h3>
-              <p>Overview and Data Health now show small, focused cards instead of dense dashboards.</p>
+              <h3>Circles is the live workspace</h3>
+              <p>Chat and space creation are enabled for Circles. Academy, IRIS, and Graduate are marked Coming soon and block creation.</p>
             </div>
             <div class="card orange">
-              <h3>Protect clarity</h3>
-              <p>Spaces, archive, bin, settings, and evidence all stay visible without crowding the page.</p>
+              <h3>Keep the prototype honest</h3>
+              <p>The UI labels sample metrics, disconnected feeds, generated answers, and evidence as illustrative or demo-only content.</p>
             </div>
           </div>
           <div class="tag-row">
             <span class="tag green">Shared shell</span>
-            <span class="tag blue">Circles first</span>
-            <span class="tag">Simple metrics</span>
-            <span class="tag">Clean status views</span>
+            <span class="tag blue">Circles active</span>
+            <span class="tag">Three planned workspaces</span>
+            <span class="tag">Explicit demo boundaries</span>
           </div>
         </section>
 
         <section id="adjustments">
-          <h2><span class="num">2</span> Key Adjustments</h2>
+          <h2><span class="num">2</span> What Changed</h2>
           <p class="lede">
-            These are the main updates that brought the frontend into its current shape.
+            The hosted copy now includes the latest frontend fixes and is separated into its own deployable repository.
           </p>
           <div class="grid two">
             <div class="card">
-              <h3>Workspace names and icons</h3>
-              <p>The spaces now use icons and the current workspace names are Circles, Graduate, IRS, and Academy.</p>
+              <h3>Standalone hosted copy</h3>
+              <p><code>frontend-host</code> has its own repository, dependency lockfile, tests, Vite base path, and GitHub Pages workflow on <code>main</code>.</p>
             </div>
             <div class="card">
-              <h3>Overview stayed minimal</h3>
-              <p>Overview now only shows the two main numbers the user needs: students in program and schools.</p>
+              <h3>Local account entry</h3>
+              <p>Sign-up, sign-in, profile editing, programme choice, sign-out, validation, and visible browser-only safety guidance are part of the current flow.</p>
             </div>
             <div class="card">
-              <h3>Data Health was simplified</h3>
-              <p>The page now uses a small metric row and short lists instead of a crowded operational dashboard.</p>
+              <h3>Safer local state</h3>
+              <p>Saved data is normalized and migrated; expired Bin items are removed, interrupted responses recover safely, and storage failures are shown to the user.</p>
             </div>
             <div class="card">
-              <h3>No backend coupling</h3>
-              <p>The current frontend stays local and frontend-only while the backend work remains separate.</p>
+              <h3>Accessibility and responsiveness</h3>
+              <p>Mobile navigation can become inert when closed, modal focus is contained, menus support keyboard movement, contrast is protected, and reduced motion is respected.</p>
             </div>
           </div>
         </section>
 
         <section id="shape">
-          <h2><span class="num">3</span> Product Shape</h2>
+          <h2><span class="num">3</span> User Journey</h2>
           <p class="lede">
-            The experience now feels like one Isomo product with a shared shell, workspace switcher, chat surface, settings, and a compact data health area.
+            This is the expected path through the current hosted prototype.
           </p>
           <div class="flow">
             <div class="flow-step">
               <div class="kicker">Step 1</div>
-              <h3>Choose workspace</h3>
-              <p>Switch between Circles, Graduate, IRS, and Academy from the sidebar.</p>
+              <h3>Create a local account</h3>
+              <p>Sign up or sign in. Account and session data remain only in this browser.</p>
             </div>
             <div class="flow-step">
               <div class="kicker">Step 2</div>
-              <h3>Scan the dashboard</h3>
-              <p>Overview shows only the two most useful counts: students and schools.</p>
+              <h3>Enter Circles</h3>
+              <p>Use the active workspace; the other programme workspaces are clearly marked Coming soon.</p>
             </div>
             <div class="flow-step">
               <div class="kicker">Step 3</div>
-              <h3>Open the data view</h3>
-              <p>Data Health shows source status, small summary cards, and a short checks list.</p>
+              <h3>Organize work</h3>
+              <p>Create spaces and chats, use quick starts, search, attach file references, and manage chat history.</p>
             </div>
             <div class="flow-step">
               <div class="kicker">Step 4</div>
-              <h3>Use the actions</h3>
-              <p>Chat menus, archive, bin, evidence, and settings are all available from the shell.</p>
+              <h3>Review demo views</h3>
+              <p>Open Overview, Data Health, or the Evidence rail with the understanding that their data is illustrative.</p>
             </div>
           </div>
         </section>
 
         <section id="roadmap">
-          <h2><span class="num">4</span> Current State</h2>
+          <h2><span class="num">4</span> Implementation Status</h2>
           <p class="lede">
-            This is the current frontend shape after the latest rounds of cleanup and simplification.
+            “Live” here means the review build is hosted and usable. It does not mean the product has production services or operational data.
           </p>
           <div class="timeline">
             <div class="phase current">
-              <div class="phase-id">Shell</div>
+              <div class="phase-id">Hosting</div>
               <div>
-                <h3>Shared app frame</h3>
-                <p>Logo, workspace switcher, side navigation, chat list, space icons, settings entry, archive, and bin all live in one consistent shell.</p>
+                <h3>Standalone GitHub Pages build</h3>
+                <p>The public <code>frontend-host</code> repository deploys <code>main</code> automatically through GitHub Actions.</p>
               </div>
-              <span class="status">Current</span>
+              <span class="status">Live for review</span>
             </div>
             <div class="phase">
-              <div class="phase-id">Overview</div>
+              <div class="phase-id">Quality</div>
               <div>
-                <h3>Two-card summary</h3>
-                <p>Overview now shows only total students in program and schools so the page stays clean and useful.</p>
+                <h3>Automated checks and build</h3>
+                <p>Nine state tests pass, the production bundle builds, and deployment repeats install, test, build, and publish steps.</p>
               </div>
-              <span class="status later">Done</span>
+              <span class="status later">Passing</span>
             </div>
             <div class="phase">
-              <div class="phase-id">Data Health</div>
+              <div class="phase-id">Services</div>
               <div>
-                <h3>Simple health view</h3>
-                <p>The page uses compact metric cards, key feeds, and short checks so it remains readable in light mode.</p>
+                <h3>Frontend simulation only</h3>
+                <p>Authentication, assistant replies, evidence, metrics, sources, and checks are local demonstrations with no server calls.</p>
               </div>
-              <span class="status later">Done</span>
+              <span class="status later">Demo only</span>
             </div>
             <div class="phase">
-              <div class="phase-id">Settings</div>
+              <div class="phase-id">Workspaces</div>
               <div>
-                <h3>Theme and workspace controls</h3>
-                <p>The settings area now uses smaller modern controls, plates for color choices, and clearer workspace options.</p>
+                <h3>Circles active; three planned</h3>
+                <p>Academy, IRIS, and Graduate appear in the switcher as planned previews, while creation actions remain guarded.</p>
               </div>
-              <span class="status later">Updated</span>
+              <span class="status later">Planned</span>
             </div>
           </div>
         </section>
 
         <section id="screens">
-          <h2><span class="num">5</span> Screen Plan</h2>
+          <h2><span class="num">5</span> Screens &amp; Behavior</h2>
           <p class="lede">
-            These are the screens and shell areas that exist in the current frontend. They are intentionally simple so the app stays easy to scan.
+            These routes and modal surfaces exist in the current frontend. The router also redirects unknown paths back to the workspace home.
           </p>
-          <div class="card orange" style="margin-bottom:14px">
-            <h3>Current rule: show clarity, not clutter</h3>
-            <p>The current build uses real UI states, but the pages stay compact: two overview cards, a small Data Health view, short source/check lists, and lightweight settings.</p>
+          <div class="card orange spaced-bottom">
+            <h3>Expected behavior</h3>
+            <p>After local authentication, users move through one persistent shell. Navigation protects unsent drafts, planned workspaces reject unsupported creation, and destructive actions use confirmation or recovery paths.</p>
           </div>
-          <div class="table-wrap" style="margin-bottom:14px">
+          <div class="table-wrap spaced-bottom">
             <table>
               <thead>
                 <tr>
-                  <th>Page / App Module</th>
-                  <th>Route / Entry</th>
-                  <th>What It Shows Now</th>
+                  <th>Surface</th>
+                  <th>Route or entry</th>
+                  <th>Current behavior</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Workspace</td>
+                  <td>Account access</td>
+                  <td>Authentication gate</td>
+                  <td>Local sign-up and sign-in with validation; there is no server identity provider.</td>
+                </tr>
+                <tr>
+                  <td>Workspace home</td>
                   <td>/</td>
-                  <td>Shared shell, workspace switcher, side navigation, spaces, chat history, and top bar context.</td>
+                  <td>Greeting, quick starts, new chat/new space actions, up to five spaces, and recent chats.</td>
+                </tr>
+                <tr>
+                  <td>Space</td>
+                  <td>/space/:spaceId</td>
+                  <td>Space summary, in-space chat search, chats, file-reference metadata, and settings.</td>
                 </tr>
                 <tr>
                   <td>Overview</td>
                   <td>/overview</td>
-                  <td>Two cards only: total students in program and schools, with workspace-specific values.</td>
+                  <td>Two illustrative cards: total students in programme and schools. Values are sample data.</td>
                 </tr>
                 <tr>
                   <td>Data Health</td>
                   <td>/data-health</td>
-                  <td>Compact summary cards, key feeds list, and a short latest-checks list.</td>
+                  <td>Four demo cards, four disconnected source types, and three checks that are not running.</td>
                 </tr>
                 <tr>
                   <td>Settings</td>
-                  <td>Modal from shell</td>
-                  <td>Theme mode, workspace look plates, workspace names, archive/bin entry points, and account actions.</td>
+                  <td>Modal from account menu</td>
+                  <td>System/light/dark theme, five looks, profile, default programme, Archive, Bin, and sign-out.</td>
                 </tr>
                 <tr>
-                  <td>Space menus</td>
-                  <td>Three-dot menus</td>
-                  <td>Rename, pin, archive, and move to bin for chats; settings and delete for spaces.</td>
+                  <td>Management menus</td>
+                  <td>Context and modal actions</td>
+                  <td>Rename, pin, archive, restore, move to Bin, permanent delete, space edit, and space delete.</td>
                 </tr>
               </tbody>
             </table>
@@ -1212,184 +1303,224 @@
             <article class="screen-card">
               <div class="screen-icon">01</div>
               <div>
-                <h3>Workspace shell</h3>
-                <p>Logo, workspace switcher, navigation, spaces, settings access, archive/bin entry points, and clean page framing.</p>
-                <div class="mini">The shell is the main home for everything else in the app.</div>
+                <h3>Account access</h3>
+                <p>Create a browser-local account or sign in to an account already saved on the same browser.</p>
+                <div class="mini">Prototype only: credentials are not protected by a server authentication system.</div>
               </div>
             </article>
             <article class="screen-card">
               <div class="screen-icon">02</div>
               <div>
-                <h3>Chat area</h3>
-                <p>Conversation list, message thread, composer, evidence box, and context-aware chat menus.</p>
-                <div class="mini">Evidence is intentionally compact so answers stay readable.</div>
+                <h3>Workspace home and chat</h3>
+                <p>Quick starts, recent work, a message thread, file-reference chips, composer, search, and chat menus.</p>
+                <div class="mini">The local assistant response is simulated; no AI service is called.</div>
               </div>
             </article>
             <article class="screen-card">
               <div class="screen-icon">03</div>
               <div>
-                <h3>Overview</h3>
-                <p>Two simple cards for total students in program and schools, with workspace-specific values.</p>
-                <div class="mini">This keeps the dashboard fast to read and easy to print to a boss.</div>
+                <h3>Space workspace</h3>
+                <p>Create and edit spaces with a description, color, icon, file references, and space-specific chats.</p>
+                <div class="mini">Deleting a space keeps its chats by moving them to the ungrouped list.</div>
               </div>
             </article>
             <article class="screen-card">
               <div class="screen-icon">04</div>
               <div>
-                <h3>Data Health</h3>
-                <p>Small summary cards, a short feed list, and a few quick checks for source reliability and freshness.</p>
-                <div class="mini">The goal is useful status without the overload.</div>
+                <h3>Overview</h3>
+                <p>Two compact, illustrative programme metrics keep the review screen easy to scan.</p>
+                <div class="mini">The values are sample programme rollups, not operational reports.</div>
               </div>
             </article>
             <article class="screen-card">
               <div class="screen-icon">05</div>
               <div>
-                <h3>Settings</h3>
-                <p>Theme modes, look plates, workspace choices, and account actions in a cleaner, smaller layout.</p>
-                <div class="mini">The settings UI now makes the important choices feel obvious.</div>
+                <h3>Data Health</h3>
+                <p>A preview of four source categories and three validation checks, all explicitly disconnected.</p>
+                <div class="mini">No feed or validation job is running in this frontend.</div>
               </div>
             </article>
             <article class="screen-card">
               <div class="screen-icon">06</div>
               <div>
-                <h3>Space actions</h3>
-                <p>Menu actions for chats and spaces, including archive, bin, pin, rename, and confirmation for risky bulk actions.</p>
-                <div class="mini">This is where the day-to-day workspace control lives.</div>
+                <h3>Settings, Archive, and Bin</h3>
+                <p>Appearance, profile, default programme, archived chat recovery, 30-day Bin recovery, and permanent deletion.</p>
+                <div class="mini">Automatic expiry removes Bin items after 30 days.</div>
               </div>
             </article>
           </div>
         </section>
 
         <section id="contracts">
-          <h2><span class="num">6</span> Data And Contract Notes</h2>
+          <h2><span class="num">6</span> Data &amp; Prototype Limitations</h2>
           <p class="lede">
-            The current frontend is self-contained. It does not call backend endpoints, and it does not depend on any hidden data model to render the UI you see now.
+            The app has a real client-side state model, but every account, workspace, chat, message, preference, and lifecycle action is stored locally. Nothing is synchronized to a server.
           </p>
-          <div class="grid two" style="margin-bottom:14px">
+          <div class="grid two spaced-bottom">
             <div class="card blue">
-              <h3>What is shown visually</h3>
+              <h3>What the browser stores</h3>
               <ul>
-                <li>Workspace names: Circles, Graduate, IRS, Academy.</li>
-                <li>Space icons on the sidebar and settings icon for workspace configuration.</li>
-                <li>Chat menus with pin, rename, archive, and bin actions.</li>
-                <li>Evidence shown as a small card inside assistant answers.</li>
+                <li>Local account details, password, and current session.</li>
+                <li>Per-user workspaces, spaces, chats, messages, and file metadata.</li>
+                <li>Theme, visual look, Archive state, and Bin timestamps.</li>
+                <li>Normalized migrations and recovery state after interrupted responses.</li>
               </ul>
             </div>
             <div class="card green">
-              <h3>What is not in this frontend</h3>
+              <h3>What is not connected</h3>
               <ul>
-                <li>No backend endpoints.</li>
-                <li>No identity review screen.</li>
-                <li>No access model or role UI.</li>
-                <li>No login flow in the current build.</li>
+                <li>No server authentication, permissions service, or shared accounts.</li>
+                <li>No API, database, AI model, or live programme data.</li>
+                <li>No file-content upload, parsing, or document storage.</li>
+                <li>No live feed, SQL execution, validation job, or real citation retrieval.</li>
               </ul>
             </div>
           </div>
-          <div class="card blue">
-            <h3>Evidence note</h3>
-            <p>Evidence is displayed visually in a compact box so chat answers can show the source context without taking over the page. It is presentational in this frontend-only build.</p>
+          <div class="grid two spaced-bottom">
+            <div class="card blue">
+              <h3>Evidence behavior</h3>
+              <p>The dedicated right-side rail displays SQL run, Rows, Documents, and Citations for the latest assistant message. Every value is placeholder context for demonstrating the intended layout.</p>
+            </div>
+            <div class="card orange">
+              <h3>File behavior</h3>
+              <p>Only each selected file’s name, type, size, and modification timestamp are retained as references. File contents are never uploaded or read by this prototype.</p>
+            </div>
+          </div>
+          <div class="card orange">
+            <h3>Safety note</h3>
+            <p>Do not enter a real or reused password, sensitive programme information, or confidential files. Clearing browser storage can remove all locally saved work.</p>
           </div>
         </section>
 
         <section id="vue">
-          <h2><span class="num">7</span> Vue.js Implementation</h2>
+          <h2><span class="num">7</span> Vue Implementation</h2>
           <p class="lede">
-            The app uses Vue 3 with a lightweight local state approach. The goal is clean, maintainable frontend code rather than a heavy framework stack.
+            The hosted application is a small Vue single-page app with explicit routes, centralized reactive state, one shared stylesheet, and no runtime backend dependency.
           </p>
           <div class="grid two">
             <div class="card">
               <h3>Current stack</h3>
               <ul>
-                <li>Vue 3</li>
-                <li>Vue Router</li>
-                <li>Vite</li>
-                <li>Local reactive state module</li>
-                <li>Single shared stylesheet</li>
+                <li>Vue <code>^3.5.39</code></li>
+                <li>Vue Router <code>^5.1.0</code></li>
+                <li>Vite <code>^7.3.6</code></li>
+                <li>Node.js <code>&gt;=22.18</code></li>
+                <li>Native Node test runner</li>
               </ul>
             </div>
             <div class="card">
-              <h3>Current files</h3>
-              <pre><code>frontend/src/pages/HomePage.vue
-frontend/src/pages/OverviewPage.vue
-frontend/src/pages/DataHealthPage.vue
-frontend/src/components/AppShell.vue
-frontend/src/components/ModalRoot.vue
-frontend/src/state/appState.js
-frontend/style.css</code></pre>
+              <h3>Run and verify</h3>
+              <pre><code>cd frontend-host
+npm ci
+npm test
+npm run build
+npm run dev</code></pre>
             </div>
           </div>
-          <div class="card blue" style="margin-top:14px">
-            <h3>Core UI pieces</h3>
-            <div class="tag-row">
-              <span class="tag">AppShell</span>
-              <span class="tag">Workspace switcher</span>
-              <span class="tag">Overview cards</span>
-              <span class="tag">Data Health cards</span>
-              <span class="tag">Settings modal</span>
-              <span class="tag">Space menu</span>
-              <span class="tag">Archive / Bin</span>
-              <span class="tag">Evidence box</span>
-              <span class="tag">Theme plates</span>
+          <div class="grid two spaced-top">
+            <div class="card">
+              <h3>Primary source files</h3>
+              <pre><code>frontend-host/src/main.js
+frontend-host/src/App.vue
+frontend-host/src/components/AuthPage.vue
+frontend-host/src/components/AppShell.vue
+frontend-host/src/components/ModalRoot.vue
+frontend-host/src/components/ToastStack.vue
+frontend-host/src/pages/*.vue
+frontend-host/src/state/appState.js
+frontend-host/style.css</code></pre>
             </div>
+            <div class="card">
+              <h3>Quality and release files</h3>
+              <pre><code>frontend-host/tests/appState.test.js
+frontend-host/package.json
+frontend-host/vite.config.js
+frontend-host/.github/workflows/gh-pages.yml</code></pre>
+            </div>
+          </div>
+          <div class="card blue spaced-top">
+            <h3>Architecture at a glance</h3>
+            <div class="tag-row">
+              <span class="tag">Auth gate</span>
+              <span class="tag">AppShell</span>
+              <span class="tag">Vue Router</span>
+              <span class="tag">Reactive app state</span>
+              <span class="tag">ModalRoot</span>
+              <span class="tag">ToastStack</span>
+              <span class="tag">Local persistence</span>
+              <span class="tag">SPA fallback</span>
+            </div>
+          </div>
+          <div class="card green spaced-top">
+            <h3>Routes and Pages hosting</h3>
+            <p>The routes are <code>/</code>, <code>/space/:spaceId</code>, <code>/overview</code>, and <code>/data-health</code>, with a catch-all redirect. Vite uses the <code>/frontend-host/</code> base path, and the build copies <code>index.html</code> to <code>404.html</code> so direct route visits work on GitHub Pages.</p>
           </div>
         </section>
 
         <section id="brain">
           <h2><span class="num">8</span> Chat And Evidence</h2>
           <p class="lede">
-            The chat view now behaves like a focused working area: message thread, composer, evidence box, and context-aware menu actions. The evidence block is small on purpose so it supports the answer instead of crowding it.
+            The current chat experience demonstrates lifecycle, organization, draft, and evidence interactions without making a network request.
           </p>
-          <div class="grid two" style="margin-bottom:14px">
+          <div class="grid two">
             <div class="card blue">
-              <h3>Chat experience</h3>
-              <p>Users can open chats from spaces, create a new untitled chat, rename it after the first prompt, and keep the current workspace in view.</p>
+              <h3>Chat lifecycle</h3>
+              <p>Create global or space chats, derive a title from the first message, rename manually, search, pin, archive, restore, move to Bin, restore from Bin, or delete permanently.</p>
             </div>
             <div class="card orange">
-              <h3>Evidence style</h3>
-              <p>Evidence is rendered as a compact bordered box with rows for source context so the answer stays readable and visually calm.</p>
+              <h3>Draft protection</h3>
+              <p>Untouched draft chats are reused, unsent composer content is protected during conflicting navigation, and workspace changes clear or preserve draft state deliberately.</p>
+            </div>
+            <div class="card green">
+              <h3>Simulated answer</h3>
+              <p>Circles generates a delayed local response after roughly 700 ms. The response can list selected file names, but it never reads those files and does not contact an AI model.</p>
+            </div>
+            <div class="card blue">
+              <h3>Evidence rail</h3>
+              <p>The separate rail shows placeholder SQL status, rows, documents, and citations. During a reload, an unfinished answer becomes an interrupted message instead of remaining stuck.</p>
             </div>
           </div>
         </section>
 
         <section id="design">
-          <h2><span class="num">9</span> Visual Direction</h2>
+          <h2><span class="num">9</span> Visual &amp; Accessibility</h2>
           <p class="lede">
-            The UI is tuned to be calmer in light mode and still readable in dark mode. Colors are used as plates and status cues, not decoration.
+            The interface keeps the Isomo palette while supporting multiple reading environments, responsive navigation, keyboard use, and motion preferences.
           </p>
           <div class="swatches">
             <div class="swatch">
-              <div class="color" style="background:#8cc63d"></div>
-              <div class="body"><strong>Green</strong><span>#8CC63D<br>Primary actions, success, confirmed records.</span></div>
+              <div class="color green"></div>
+              <div class="body"><strong>Green</strong><span>#8CC63D<br>Primary actions and success.</span></div>
             </div>
             <div class="swatch">
-              <div class="color" style="background:#1dafec"></div>
-              <div class="body"><strong>Blue</strong><span>#1DAFEC<br>Links, active states, and information.</span></div>
+              <div class="color blue"></div>
+              <div class="body"><strong>Blue</strong><span>#1DAFEC<br>Links, focus, and information.</span></div>
             </div>
             <div class="swatch">
-              <div class="color" style="background:#303030"></div>
+              <div class="color dark"></div>
               <div class="body"><strong>Dark</strong><span>#303030<br>Headings and strong contrast text.</span></div>
             </div>
             <div class="swatch">
-              <div class="color" style="background:#54595f"></div>
+              <div class="color muted"></div>
               <div class="body"><strong>Muted</strong><span>#54595F<br>Secondary text and metadata.</span></div>
             </div>
             <div class="swatch">
-              <div class="color" style="background:#ededed"></div>
+              <div class="color border"></div>
               <div class="body"><strong>Border</strong><span>#EDEDED<br>Lines, separators, and quiet structure.</span></div>
             </div>
           </div>
-          <div class="grid three" style="margin-top:14px">
+          <div class="grid three spaced-top">
             <div class="card green">
-              <h3>Simple cards</h3>
-              <p>Overview and Data Health use small cards with enough detail to be useful and no more.</p>
+              <h3>Themes and looks</h3>
+              <p>System, Light, and Dark modes combine with Growth, Insight, Audit, Charcoal, and Slate visual looks.</p>
             </div>
             <div class="card blue">
-              <h3>Workspace colors</h3>
-              <p>Settings includes color plates and look options so the interface can feel different without becoming busy.</p>
+              <h3>Keyboard and focus</h3>
+              <p>Auth tabs, menus, dialogs, and mobile navigation use focus management, semantic roles, and keyboard-aware behavior.</p>
             </div>
             <div class="card orange">
-              <h3>Readable light mode</h3>
-              <p>The white theme is softened so content stays visible without harsh brightness.</p>
+              <h3>Responsive and calm</h3>
+              <p>The shell collapses across desktop and mobile, accessible accent contrast is computed, and reduced-motion preferences shorten transitions.</p>
             </div>
           </div>
         </section>
@@ -1397,35 +1528,36 @@ frontend/style.css</code></pre>
         <section id="rules">
           <h2><span class="num">10</span> Rules And Guardrails</h2>
           <p class="lede">
-            These are the rules that keep the frontend honest and easy to maintain.
+            These rules keep reviews accurate today and make future service integration safer.
           </p>
           <div class="do-dont">
             <div class="card green">
               <h3>Do</h3>
               <ul class="checklist">
-                <li><span class="check">+</span><span>Keep the UI compact and readable.</span></li>
-                <li><span class="check">+</span><span>Use workspace names, icons, and color plates consistently.</span></li>
-                <li><span class="check">+</span><span>Show evidence visually without overwhelming the chat.</span></li>
-                <li><span class="check">+</span><span>Keep Overview to the main counts users need.</span></li>
-                <li><span class="check">+</span><span>Use confirmation for risky bulk actions like clearing chats to bin.</span></li>
+                <li><span class="check">+</span><span>Keep every placeholder metric, answer, source, and citation visibly labeled as demo content.</span></li>
+                <li><span class="check">+</span><span>Run <code>npm test</code> and <code>npm run build</code> before publishing.</span></li>
+                <li><span class="check">+</span><span>Preserve route fallbacks, keyboard behavior, draft guards, and recovery states.</span></li>
+                <li><span class="check">+</span><span>Keep the browser-only warning visible while local storage is used.</span></li>
+                <li><span class="check">+</span><span>Add future APIs behind a service layer with loading, empty, and error states.</span></li>
               </ul>
             </div>
             <div class="card">
               <h3>Do Not</h3>
               <ul class="checklist">
-                <li><span class="x">-</span><span>Bring backend endpoints into the current frontend.</span></li>
-                <li><span class="x">-</span><span>Reintroduce identity review or access model UI into the current build.</span></li>
-                <li><span class="x">-</span><span>Add dense cards or extra dashboards just to fill space.</span></li>
-                <li><span class="x">-</span><span>Make Data Health feel like a technical control panel.</span></li>
+                <li><span class="x">-</span><span>Treat localStorage credentials or sessions as production authentication.</span></li>
+                <li><span class="x">-</span><span>Present sample Overview figures or Data Health states as live operations.</span></li>
+                <li><span class="x">-</span><span>Store real passwords, confidential records, or sensitive programme information.</span></li>
+                <li><span class="x">-</span><span>Claim that selected file contents are uploaded, parsed, or searched.</span></li>
+                <li><span class="x">-</span><span>Enable planned workspaces until their behavior and data contracts are implemented.</span></li>
               </ul>
             </div>
           </div>
         </section>
 
         <section id="done">
-          <h2><span class="num">11</span> Current Scope</h2>
+          <h2><span class="num">11</span> Release &amp; Current Scope</h2>
           <p class="lede">
-            This is the current state the boss should review. The frontend is already simplified and ready to share as a live working copy.
+            This hosted version is ready for stakeholder walkthroughs and frontend review. It is not ready for real accounts, confidential data, operational reporting, or production use.
           </p>
           <div class="table-wrap">
             <table>
@@ -1433,46 +1565,56 @@ frontend/style.css</code></pre>
                 <tr>
                   <th>Area</th>
                   <th>Included Now</th>
-                  <th>Why It Matters</th>
+                  <th>Current Boundary</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Shell</td>
-                  <td>Logo, workspace switcher, navigation, spaces, settings, archive, bin, and responsive framing.</td>
-                  <td>Shows the whole app structure clearly from the first view.</td>
+                  <td>Access and shell</td>
+                  <td>Local account flow, responsive navigation, search, settings, profile, themes, and programme switcher.</td>
+                  <td>One browser only; no server identity, roles, or cross-device sync.</td>
                 </tr>
                 <tr>
-                  <td>Overview</td>
-                  <td>Total students in program and schools only.</td>
-                  <td>Keeps the dashboard simple and boss-friendly.</td>
+                  <td>Circles workspace</td>
+                  <td>Quick starts, spaces, chats, file references, search, Archive, and 30-day Bin.</td>
+                  <td>Assistant replies and evidence are generated locally as demo content.</td>
                 </tr>
                 <tr>
-                  <td>Data Health</td>
-                  <td>Four summary cards, key feeds, and a short check list.</td>
-                  <td>Communicates status without too much visual weight.</td>
+                  <td>Planned workspaces</td>
+                  <td>Academy, IRIS, and Graduate appear in the switcher with branded previews.</td>
+                  <td>Creation and chat actions are disabled as Coming soon.</td>
                 </tr>
                 <tr>
-                  <td>Settings</td>
-                  <td>Themes, look plates, workspace options, and account actions.</td>
-                  <td>Makes the app feel customizable without being cluttered.</td>
+                  <td>Overview and Data Health</td>
+                  <td>Two illustrative metrics, four demo status cards, four source types, and three checks.</td>
+                  <td>No operational figures, live feeds, SQL jobs, or validation jobs.</td>
                 </tr>
                 <tr>
-                  <td>Chat and evidence</td>
-                  <td>Message thread, composer, evidence block, and chat menus.</td>
-                  <td>Keeps the assistant experience useful and readable.</td>
+                  <td>Quality and release</td>
+                  <td>Nine passing tests, passing production build, SPA fallback, and automatic Pages deployment.</td>
+                  <td>Frontend checks do not replace backend, security, integration, or end-to-end testing.</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="card blue" style="margin-top:14px">
-            <h3>Final note</h3>
-            <p>The current frontend is the version to share and keep updating on the eddy branch.</p>
+          <div class="grid two spaced-top">
+            <div class="card blue">
+              <h3>Live review</h3>
+              <p><a href="https://iamedisonu.github.io/frontend-host/" target="_blank" rel="noopener noreferrer">iamedisonu.github.io/frontend-host/</a></p>
+            </div>
+            <div class="card green">
+              <h3>Source repository</h3>
+              <p><a href="https://github.com/iamedisonu/frontend-host" target="_blank" rel="noopener noreferrer">github.com/iamedisonu/frontend-host</a> · branch <code>main</code></p>
+            </div>
+          </div>
+          <div class="card orange spaced-top">
+            <h3>Release process</h3>
+            <p>Push reviewed source changes to <code>main</code>. GitHub Actions installs dependencies with Node 22, runs all tests, builds the app, uploads the Pages artifact, and deploys it. Do not edit generated <code>dist</code> files by hand.</p>
           </div>
         </section>
 
         <div class="footer-note">
-          Prepared as a current-state frontend handoff for supervisor review. Source project root: <code>/Users/mine/Desktop/Isomo</code>.
+          Last verified <time datetime="2026-07-14">14 July 2026</time>. Source project root: <code>/Users/mine/Desktop/Isomo/frontend-host</code>. The historical filename contains “REACT,” but the current implementation documented here is Vue 3; the filename is retained to avoid breaking existing references.
         </div>
       </div>
     </div>
